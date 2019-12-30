@@ -288,6 +288,15 @@ class Eth(Module):
             raise TransactionNotFound(f"Transaction with hash: {transaction_hash} not found.")
         return result
 
+    def getRawTransaction(self, transaction_hash: _Hash32) -> TxData:
+        result = self.web3.manager.request_blocking(
+            RPC.eth_getRawTransactionByHash,
+            [transaction_hash],
+        )
+        if result is None:
+            raise TransactionNotFound(f"Transaction with hash: {transaction_hash} not found.")
+        return result
+
     def getTransactionFromBlock(
         self, block_identifier: BlockIdentifier, transaction_index: int
     ) -> NoReturn:

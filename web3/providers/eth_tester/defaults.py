@@ -253,6 +253,7 @@ API_ENDPOINTS = {
         'getTransactionByHash': null_if_transaction_not_found(
             call_eth_tester('get_transaction_by_hash')
         ),
+        'getRawTransactionByHash': not_implemented,
         'getTransactionByBlockHashAndIndex': get_transaction_by_block_hash_and_index,
         'getTransactionByBlockNumberAndIndex': get_transaction_by_block_number_and_index,
         'getTransactionReceipt': null_if_transaction_not_found(compose(

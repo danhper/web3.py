@@ -394,6 +394,7 @@ PYTHONIC_RESULT_FORMATTERS: Dict[RPCEndpoint, Callable[..., Any]] = {
         transaction_formatter,
     ),
     RPC.eth_getTransactionByHash: apply_formatter_if(is_not_null, transaction_formatter),
+    RPC.eth_getRawTransactionByHash: apply_formatter_if(is_not_null, HexBytes),
     RPC.eth_getTransactionCount: to_integer_if_hex,
     RPC.eth_getTransactionReceipt: apply_formatter_if(
         is_not_null,
